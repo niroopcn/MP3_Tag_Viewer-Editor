@@ -1,0 +1,6 @@
+*.code-workspace
+*.mp3
+a.out
+.vscode/
+*.txt
+*.o
