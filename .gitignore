@@ -2,5 +2,6 @@
 *.mp3
 a.out
 .vscode/
+Docs
 *.txt
 *.o
