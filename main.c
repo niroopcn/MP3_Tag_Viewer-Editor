@@ -92,8 +92,11 @@ int main(int argc, char *argv[])
 		}
 		break;
 	    default:
-		fprintf(stderr, "[ERROR] %s is an unsupported format\n", argv[1]);
-		formaterrorflag = 1;
+		{
+			fprintf(stderr, "[ERROR] %s is an unsupported format\n", argv[1]);
+			formaterrorflag = 1;
+		}
+		break;
 	}
     }
     else
@@ -126,6 +129,8 @@ TagType check(char *buffer)
 	return e_genre;
     else if (!strcmp(buffer, "COMM"))
 	return e_comments;
+	else
+	return e_no_tag;
 }
 
 OperationType check_operation(char *str)
@@ -197,8 +202,9 @@ Status read_and_validate_args(MP3Data *structure, char *argv[], OperationType op
 		}
 	    }
 	    break;
-	default:
+		default: break;
     }
+	return e_failure;
 }
 
 Status open_mp3_file(MP3Data *structure, char *mode)

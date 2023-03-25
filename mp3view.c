@@ -11,9 +11,9 @@ void view_mp3_file_contents(MP3Data *view)
     {
         if(read_tag_and_size(view) == e_success)
         count++;
-        
+
         free(view->str_buffer);
-        
+
         if(count == 6)
         {
             break;
@@ -25,7 +25,7 @@ Status read_tag_and_size(MP3Data *view)
 {
     char buffer[4];
     fread(buffer, sizeof(char), 4, view->fptr);
-    
+
     fread( (char *)(&view->char_size) + 3, sizeof(char), 1, view->fptr);
     fread( (char *)(&view->char_size) + 2, sizeof(char), 1, view->fptr);
     fread( (char *)(&view->char_size) + 1, sizeof(char), 1, view->fptr);
@@ -60,9 +60,10 @@ Status read_tag_and_size(MP3Data *view)
             success = 1;
         break;
         case e_comments:
-            printf("Comments: "); 
+            printf("Comments: ");
             success = 1;
         break;
+        default: break;
     }
 
     if(success)
